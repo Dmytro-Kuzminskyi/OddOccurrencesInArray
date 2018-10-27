@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OddOccurrencesInArray
+﻿namespace OddOccurrencesInArray
 {
 	class Solution
 	{
 		public int solution(int[] A)
 		{
 			if (A.Length == 1) return A[0];
-			bool[] CheckedA = new bool[A.Length];
 			for (int i = 0; i < A.Length; i++)
 			{
-				if (CheckedA[i]) continue;
+				if (A[i] == 0) continue;
 				else
 				{
+					if (A[i] != 0 && i == A.Length - 1) return A[i];
 					for (int j = i + 1; j < A.Length; j++)
 					{
 						if (A[j] == A[i])
 						{
-							CheckedA[i] = CheckedA[j] = true;
+							A[i] = A[j] = 0;
 							break;
 						}
 						else if (A[j] != A[i] && j == A.Length - 1)

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OddOccurrencesInArray
 {
@@ -19,7 +15,8 @@ namespace OddOccurrencesInArray
 				Console.Write("Set {0} element of array: ", i + 1);
 				array[i] = int.Parse(Console.ReadLine());
 			}
-			var m = s.solution(array);
+			Console.WriteLine("Unpared element is ", s.solution(array));
+			Console.ReadKey();
 		}
 	}
 }
