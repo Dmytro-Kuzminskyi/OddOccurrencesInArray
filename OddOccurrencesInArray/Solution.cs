@@ -10,29 +10,26 @@ namespace OddOccurrencesInArray
 	{
 		public int solution(int[] A)
 		{
-			int currentNumber = 0;
-			int currentCount = 0;
+			if (A.Length == 1) return A[0];
+			bool[] CheckedA = new bool[A.Length];
 			for (int i = 0; i < A.Length; i++)
 			{
-				if (A[i] != 0)
+				if (CheckedA[i]) continue;
+				else
 				{
-					currentNumber = A[i];
-					foreach (var e in A)
+					for (int j = i + 1; j < A.Length; j++)
 					{
-						if (e == currentNumber) currentCount++;
-					}
-					if (currentCount % 2 == 0)
-					{
-						currentCount = 0;
-						for (int j = 0; j < A.Length; j++)
+						if (A[j] == A[i])
 						{
-							if (A[j] == currentNumber) A[j] = 0;
+							CheckedA[i] = CheckedA[j] = true;
+							break;
 						}
+						else if (A[j] != A[i] && j == A.Length - 1)
+							return A[i];
 					}
-					else break;
 				}
 			}
-			return currentNumber;
+			return 0;
 		}
 	}
 }
